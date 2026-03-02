@@ -63,10 +63,68 @@ public class PalindromeCheckerApp {
         scanner.close();
     }
     
+    // UC4: Character Array Based Palindrome Check
+    public boolean isPalindromeUsingCharArray(String text) {
+        // Remove spaces and convert to lowercase
+        String cleanText = text.replaceAll("\\s+", "").toLowerCase();
+        
+        // Convert string to character array
+        char[] charArray = cleanText.toCharArray();
+        
+        // Use two-pointer technique
+        int start = 0;
+        int end = charArray.length - 1;
+        
+        System.out.println("\nArray Analysis:");
+        System.out.println("Character Array: " + java.util.Arrays.toString(charArray));
+        System.out.println("Array Length: " + charArray.length);
+        
+        // Compare characters from start and end
+        while (start < end) {
+            System.out.println("Comparing charArray[" + start + "] = '" + charArray[start] + 
+                             "' with charArray[" + end + "] = '" + charArray[end] + "'");
+            
+            if (charArray[start] != charArray[end]) {
+                System.out.println("Mismatch found! Not a palindrome.");
+                return false;
+            }
+            
+            start++;
+            end--;
+        }
+        
+        System.out.println("All characters matched!");
+        return true;
+    }
+    
+    public void checkCharArrayPalindrome() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("\n========================================");
+        System.out.println("--- UC4: Character Array Based Check ---");
+        System.out.println("========================================");
+        System.out.print("Enter a word or phrase to check: ");
+        String userInput = scanner.nextLine();
+        
+        if (userInput.trim().isEmpty()) {
+            System.out.println("Error: Input cannot be empty!");
+        } else {
+            System.out.println("\nInput: \"" + userInput + "\"");
+            boolean result = isPalindromeUsingCharArray(userInput);
+            
+            System.out.println("\nResult: \"" + userInput + "\" is " + 
+                             (result ? "a PALINDROME!" : "NOT a palindrome."));
+        }
+        System.out.println("========================================");
+        
+        scanner.close();
+    }
+    
     public static void main(String[] args) {
         PalindromeCheckerApp app = new PalindromeCheckerApp();
         app.displayWelcomeMessage();
         app.checkHardcodedPalindromes();
-        app.checkUserInputPalindrome();
+        // app.checkUserInputPalindrome();  // UC3
+        app.checkCharArrayPalindrome();     // UC4: Character Array Based
     }
 }

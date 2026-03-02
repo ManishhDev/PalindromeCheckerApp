@@ -32,6 +32,14 @@ PalindromeCheckerApp/
 - Checks if the user-provided word or phrase is a palindrome
 - Provides interactive feedback to the user
 
+### UC4: Character Array Based Palindrome Check
+- Converts string to character array (char[])
+- Uses two-pointer technique for efficient comparison
+- Demonstrates array indexing and element access
+- Shows step-by-step comparison of characters
+- Displays array analysis and comparison details
+- Key concepts: Character Array, Array Indexing, Two-Pointer Technique
+
 ## How to Run
 1. Open the project in IntelliJ IDEA
 2. Navigate to `App/src/PalindromeCheckerApp.java`
