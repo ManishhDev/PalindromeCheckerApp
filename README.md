@@ -32,6 +32,13 @@ PalindromeCheckerApp/
 - Checks if the user-provided word or phrase is a palindrome
 - Provides interactive feedback to the user
 
+### UC4: Multiple Palindrome Checks
+- Allows users to check multiple words/phrases in a loop
+- Tracks the number of checks performed
+- User can continue checking or exit anytime
+- Displays check counter and final summary
+- Enhanced user experience with checkmark symbols
+
 ## How to Run
 1. Open the project in IntelliJ IDEA
 2. Navigate to `App/src/PalindromeCheckerApp.java`
