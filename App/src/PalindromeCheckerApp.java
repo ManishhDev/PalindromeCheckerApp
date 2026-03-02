@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
     
@@ -101,12 +102,82 @@ public class PalindromeCheckerApp {
         scanner.close();
     }
     
+    // UC5: Stack-Based Palindrome Checker
+    public boolean isPalindromeUsingStack(String text) {
+        // Remove spaces and convert to lowercase
+        String cleanText = text.replaceAll("\\s+", "").toLowerCase();
+        
+        // Create a Stack to store characters
+        Stack<Character> stack = new Stack<>();
+        
+        System.out.println("\nStack Operations:");
+        System.out.println("Original Text: " + cleanText);
+        System.out.println("\nPush Operations (adding to stack):");
+        
+        // Push all characters onto the stack
+        for (int i = 0; i < cleanText.length(); i++) {
+            char ch = cleanText.charAt(i);
+            stack.push(ch);
+            System.out.println("Pushed: '" + ch + "' -> Stack: " + stack);
+        }
+        
+        System.out.println("\nStack is full. Size: " + stack.size());
+        System.out.println("\nPop Operations (removing from stack - LIFO):");
+        
+        // Build reversed string by popping from stack
+        StringBuilder reversed = new StringBuilder();
+        Stack<Character> tempStack = (Stack<Character>) stack.clone();
+        
+        while (!tempStack.isEmpty()) {
+            char ch = tempStack.pop();
+            reversed.append(ch);
+            System.out.println("Popped: '" + ch + "' -> Reversed so far: " + reversed);
+        }
+        
+        String reversedText = reversed.toString();
+        System.out.println("\nComparison:");
+        System.out.println("Original:  " + cleanText);
+        System.out.println("Reversed:  " + reversedText);
+        
+        // Compare original with reversed
+        boolean isPalindrome = cleanText.equals(reversedText);
+        System.out.println("Match: " + (isPalindrome ? "YES" : "NO"));
+        
+        return isPalindrome;
+    }
+    
+    public void checkStackBasedPalindrome() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("\n========================================");
+        System.out.println("--- UC5: Stack-Based Palindrome Check ---");
+        System.out.println("========================================");
+        System.out.println("Using Stack (LIFO - Last In First Out)");
+        System.out.print("\nEnter a word or phrase to check: ");
+        String userInput = scanner.nextLine();
+        
+        if (userInput.trim().isEmpty()) {
+            System.out.println("Error: Input cannot be empty!");
+        } else {
+            System.out.println("\nInput: \"" + userInput + "\"");
+            boolean result = isPalindromeUsingStack(userInput);
+            
+            System.out.println("\n" + "=".repeat(40));
+            System.out.println("Result: \"" + userInput + "\" is " + 
+                             (result ? "a PALINDROME!" : "NOT a palindrome."));
+            System.out.println("=".repeat(40));
+        }
+        
+        scanner.close();
+    }
+    
     public static void main(String[] args) {
         PalindromeCheckerApp app = new PalindromeCheckerApp();
         app.displayWelcomeMessage();
         app.checkHardcodedPalindromes();
         // Uncomment one of the following based on use case:
-        // app.checkUserInputPalindrome();  // UC3: Single check
-        app.checkMultiplePalindromes();     // UC4: Multiple checks
+        // app.checkUserInputPalindrome();     // UC3: Single check
+        // app.checkMultiplePalindromes();     // UC4: Multiple checks
+        app.checkStackBasedPalindrome();       // UC5: Stack-Based
     }
 }
