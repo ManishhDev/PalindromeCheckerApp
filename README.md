@@ -39,6 +39,15 @@ PalindromeCheckerApp/
 - Displays check counter and final summary
 - Enhanced user experience with checkmark symbols
 
+### UC5: Stack-Based Palindrome Checker
+- Uses Stack data structure (LIFO - Last In First Out)
+- Demonstrates Push operation to insert characters
+- Demonstrates Pop operation to remove characters in reverse order
+- Shows step-by-step stack operations
+- Compares original text with reversed text from stack
+- Visualizes the reversal logic using stack
+- Key concepts: Stack, Push, Pop, LIFO principle
+
 ## How to Run
 1. Open the project in IntelliJ IDEA
 2. Navigate to `App/src/PalindromeCheckerApp.java`
