@@ -26,6 +26,12 @@ PalindromeCheckerApp/
 - Tests with hardcoded sample words: radar, hello, level, world, madam
 - Removes spaces and handles case-insensitive comparison
 
+### UC3: User Input Palindrome Check
+- Accepts user input from console
+- Validates that input is not empty
+- Checks if the user-provided word or phrase is a palindrome
+- Provides interactive feedback to the user
+
 ## How to Run
 1. Open the project in IntelliJ IDEA
 2. Navigate to `App/src/PalindromeCheckerApp.java`

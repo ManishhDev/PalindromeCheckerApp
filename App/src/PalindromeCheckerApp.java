@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class PalindromeCheckerApp {
     
     // UC1: Application Entry & Welcome Message
@@ -41,9 +43,30 @@ public class PalindromeCheckerApp {
         System.out.println("========================================");
     }
     
+    // UC3: User Input Palindrome Check
+    public void checkUserInputPalindrome() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("\n--- UC3: User Input Palindrome Check ---");
+        System.out.print("Enter a word or phrase to check: ");
+        String userInput = scanner.nextLine();
+        
+        if (userInput.trim().isEmpty()) {
+            System.out.println("Error: Input cannot be empty!");
+        } else {
+            boolean result = isPalindrome(userInput);
+            System.out.println("\"" + userInput + "\" is " + 
+                             (result ? "a palindrome!" : "not a palindrome."));
+        }
+        System.out.println("========================================");
+        
+        scanner.close();
+    }
+    
     public static void main(String[] args) {
         PalindromeCheckerApp app = new PalindromeCheckerApp();
         app.displayWelcomeMessage();
         app.checkHardcodedPalindromes();
+        app.checkUserInputPalindrome();
     }
 }
