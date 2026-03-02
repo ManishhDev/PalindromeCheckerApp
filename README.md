@@ -48,6 +48,16 @@ PalindromeCheckerApp/
 - Visualizes the reversal logic using stack
 - Key concepts: Stack, Push, Pop, LIFO principle
 
+### UC6: Queue + Stack Based Palindrome Check
+- Uses both Queue (FIFO) and Stack (LIFO) data structures simultaneously
+- Demonstrates Enqueue operation (adding to queue)
+- Demonstrates Dequeue operation (removing from queue - FIFO)
+- Compares Queue output (original order) with Stack output (reversed order)
+- Shows behavioral difference between FIFO and LIFO structures
+- Logical comparison of dequeue vs pop to validate palindrome
+- Visualizes dual data structure operations side-by-side
+- Key concepts: Queue, Stack, FIFO vs LIFO, Enqueue, Dequeue, Comparison Logic
+
 ## How to Run
 1. Open the project in IntelliJ IDEA
 2. Navigate to `App/src/PalindromeCheckerApp.java`

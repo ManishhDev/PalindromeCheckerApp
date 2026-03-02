@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
     
@@ -171,6 +173,93 @@ public class PalindromeCheckerApp {
         scanner.close();
     }
     
+    // UC6: Queue + Stack Based Palindrome Check
+    public boolean isPalindromeUsingQueueAndStack(String text) {
+        // Remove spaces and convert to lowercase
+        String cleanText = text.replaceAll("\\s+", "").toLowerCase();
+        
+        // Create Queue (FIFO) and Stack (LIFO)
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
+        
+        System.out.println("\nDual Data Structure Operations:");
+        System.out.println("Original Text: " + cleanText);
+        System.out.println("\n--- Inserting characters into Queue & Stack ---");
+        
+        // Add characters to both Queue and Stack
+        for (int i = 0; i < cleanText.length(); i++) {
+            char ch = cleanText.charAt(i);
+            queue.add(ch);      // Enqueue (FIFO)
+            stack.push(ch);     // Push (LIFO)
+            System.out.println("Character: '" + ch + "'");
+            System.out.println("  Queue (FIFO): " + queue + " <- Enqueued");
+            System.out.println("  Stack (LIFO): " + stack + " <- Pushed");
+        }
+        
+        System.out.println("\nQueue size: " + queue.size());
+        System.out.println("Stack size: " + stack.size());
+        
+        System.out.println("\n--- Comparing Dequeue (FIFO) vs Pop (LIFO) ---");
+        System.out.println("Queue gives ORIGINAL order (First In First Out)");
+        System.out.println("Stack gives REVERSE order (Last In First Out)");
+        System.out.println();
+        
+        boolean isPalindrome = true;
+        int position = 1;
+        
+        // Compare dequeue vs pop
+        while (!queue.isEmpty() && !stack.isEmpty()) {
+            char fromQueue = queue.remove();  // Dequeue (front)
+            char fromStack = stack.pop();     // Pop (top)
+            
+            System.out.printf("Position %d: Dequeue='%c' vs Pop='%c' -> %s%n",
+                position, fromQueue, fromStack,
+                (fromQueue == fromStack ? "MATCH ✓" : "MISMATCH ✗"));
+            
+            if (fromQueue != fromStack) {
+                isPalindrome = false;
+            }
+            position++;
+        }
+        
+        System.out.println("\nFinal Verdict: " + (isPalindrome ? "All characters matched!" : "Mismatch found!"));
+        
+        return isPalindrome;
+    }
+    
+    public void checkQueueStackPalindrome() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("--- UC6: Queue + Stack Palindrome Check ---");
+        System.out.println("=".repeat(50));
+        System.out.println("Demonstrating FIFO (Queue) vs LIFO (Stack)");
+        System.out.print("\nEnter a word or phrase to check: ");
+        String userInput = scanner.nextLine();
+        
+        if (userInput.trim().isEmpty()) {
+            System.out.println("Error: Input cannot be empty!");
+        } else {
+            System.out.println("\nInput: \"" + userInput + "\"");
+            boolean result = isPalindromeUsingQueueAndStack(userInput);
+            
+            System.out.println("\n" + "=".repeat(50));
+            System.out.println("Result: \"" + userInput + "\" is " + 
+                             (result ? "a PALINDROME!" : "NOT a palindrome."));
+            System.out.println("\nExplanation:");
+            if (result) {
+                System.out.println("Queue output (original order) matches");
+                System.out.println("Stack output (reversed order) perfectly!");
+            } else {
+                System.out.println("Queue output (original order) does NOT match");
+                System.out.println("Stack output (reversed order).");
+            }
+            System.out.println("=".repeat(50));
+        }
+        
+        scanner.close();
+    }
+    
     public static void main(String[] args) {
         PalindromeCheckerApp app = new PalindromeCheckerApp();
         app.displayWelcomeMessage();
@@ -178,6 +267,7 @@ public class PalindromeCheckerApp {
         // Uncomment one of the following based on use case:
         // app.checkUserInputPalindrome();     // UC3: Single check
         // app.checkMultiplePalindromes();     // UC4: Multiple checks
-        app.checkStackBasedPalindrome();       // UC5: Stack-Based
+        // app.checkStackBasedPalindrome();    // UC5: Stack-Based
+        app.checkQueueStackPalindrome();       // UC6: Queue + Stack
     }
 }
