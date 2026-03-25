@@ -66,6 +66,13 @@ PalindromeCheckerApp/
 - Applies Strategy Pattern to swap palindrome algorithms without changing client code
 - Data structure used depends on selected strategy
 
+### UC13: Performance Comparison
+- Runs multiple palindrome algorithms on the same normalized input
+- Captures execution time using `System.nanoTime()`
+- Compares total execution time and average time per run
+- Includes correctness validation across all algorithms before reporting
+- Highlights the fastest algorithm for the current input
+
 ## How to Run
 1. Open the project in IntelliJ IDEA
 2. Navigate to `App/src/PalindromeCheckerApp.java`
