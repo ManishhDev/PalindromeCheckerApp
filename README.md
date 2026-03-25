@@ -58,6 +58,14 @@ PalindromeCheckerApp/
 - Visualizes dual data structure operations side-by-side
 - Key concepts: Queue, Stack, FIFO vs LIFO, Enqueue, Dequeue, Comparison Logic
 
+### UC12: Strategy Pattern for Palindrome Algorithms (Advanced)
+- Defines a `PalindromeStrategy` interface
+- Implements `StackStrategy` and `DequeStrategy`
+- Selects algorithm dynamically at runtime
+- Demonstrates interface-based polymorphism
+- Applies Strategy Pattern to swap palindrome algorithms without changing client code
+- Data structure used depends on selected strategy
+
 ## How to Run
 1. Open the project in IntelliJ IDEA
 2. Navigate to `App/src/PalindromeCheckerApp.java`
